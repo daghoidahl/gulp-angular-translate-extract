@@ -19,10 +19,17 @@ function Helpers() {
             {
                 space: '    ',
                 cmp: function (a, b) {
-                    var lower = function (a) {
-                        return a.toLowerCase();
-                    };
-                    return lower(a.key) < lower(b.key) ? -1 : 1;
+                    var left = a.key, right = b.key;
+
+                    // Stable sort
+                    if (left < right) {
+                        return -1;
+                    }
+                    if (left == right) {
+                        return 0;
+                    } else {
+                        return 1;
+                    }
                 }
             });
         }
