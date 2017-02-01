@@ -90,6 +90,8 @@ function angularTranslate (options) {
         options.lang.forEach(function (lang) {
             translations = merge.process(results, lang);
             self.push(new gutil.File({
+                cwd: firstFile.cwd,
+                base: firstFile.base,
                 path: path.join(destinationPath, prefix + lang + suffix),
                 contents: new Buffer(Helpers.customStringify(translations, options.stringifyOptions))
             }));
